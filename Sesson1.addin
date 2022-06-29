@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Command">
+    <Text>Command Sesson1</Text>
+    <Description>Some description for Sesson1</Description>
+    <Assembly>Sesson1.dll</Assembly>
+    <FullClassName>Sesson1.Command01</FullClassName>
+    <ClientId>9e83cf63-6cf2-4a39-971d-8d96e0e0381b</ClientId>
+    <VendorId>com.typepad.thebuildingcoder</VendorId>
+    <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
+  </AddIn>
+  <AddIn Type="Application">
+    <Name>Application Sesson1</Name>
+    <Assembly>Sesson1.dll</Assembly>
+    <FullClassName>Sesson1.App</FullClassName>
+    <ClientId>6dc9e511-2782-4667-9f4a-689e5c0a99a0</ClientId>
+    <VendorId>com.typepad.thebuildingcoder</VendorId>
+    <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
+  </AddIn>
+</RevitAddIns>
