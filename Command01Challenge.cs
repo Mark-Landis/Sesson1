@@ -7,15 +7,13 @@ using Autodesk.Revit.UI.Selection;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
-
 
 #endregion
 
 namespace Sesson1
 {
     [Transaction(TransactionMode.Manual)]
-    public class Command01 : IExternalCommand
+    public class Command01Challenge : IExternalCommand
     {
         public Result Execute(
           ExternalCommandData commandData,
@@ -27,48 +25,44 @@ namespace Sesson1
             Application app = uiapp.Application;
             Document doc = uidoc.Document;
 
-
-
-
             double offset = 0.05;
             double offsetcalc = offset * doc.ActiveView.Scale;
 
-            XYZ curPoint = new XYZ (0, 0, 0);
-            XYZ offsetPoint = new XYZ(0,offsetcalc, 0);
-
-
-            List<string> lst1 = new List<string>();
-            //strings.Add("item 1");
-            //strings.Add("item 2");
-
+            XYZ curPoint = new XYZ(20, 0, 0);
+            XYZ offsetPoint = new XYZ(0, offsetcalc, 0);
 
             FilteredElementCollector collector = new FilteredElementCollector(doc);
             collector.OfClass(typeof(TextNoteType));
 
-            Transaction t = new Transaction(doc, "Create Text Note");
+            Transaction t = new Transaction(doc, "FizzBuzz");
             t.Start();
 
 
             for (int i = 1; i <= 100; i++)  //Defines for loop
             {
-                TextNote curNote = TextNote.Create(doc, doc.ActiveView.Id, curPoint, "This is line " + i.ToString(), collector.FirstElementId());
-                curPoint = curPoint.Subtract(offsetPoint);
+                if (i % 3 ==0 && i % 5 ==0)
+                {
+                    TextNote curNote = TextNote.Create(doc, doc.ActiveView.Id, curPoint, "FIZZBUZZ", collector.FirstElementId());
+                    curPoint = curPoint.Subtract(offsetPoint);
+                }
+                else if (i % 3 == 0)
+                {
+                    TextNote curNote = TextNote.Create(doc, doc.ActiveView.Id, curPoint, "FIZZ", collector.FirstElementId());
+                    curPoint = curPoint.Subtract(offsetPoint);
+                }
+                else
+                {
+                    TextNote curNote = TextNote.Create(doc, doc.ActiveView.Id, curPoint, i.ToString(), collector.FirstElementId());
+                    curPoint = curPoint.Subtract(offsetPoint);
+                }
+
             }
 
 
             t.Commit();
             t.Dispose();
 
-
             return Result.Succeeded;
-        }
-
-        internal double Method01( double a, double b)
-        {
-            double c = a + b;
-            Debug.Print("Got here: " + c.ToString());
-
-            return c;   
         }
     }
 }

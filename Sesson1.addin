@@ -9,6 +9,15 @@
     <VendorId>com.typepad.thebuildingcoder</VendorId>
     <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
   </AddIn>
+	<AddIn Type="Command">
+		<Text>Command Sesson1Challenge</Text>
+		<Description>Sesson1 Challenge</Description>
+		<Assembly>Sesson1.dll</Assembly>
+		<FullClassName>Sesson1.Command01Challenge</FullClassName>
+		<ClientId>D74BAC5D-FD4A-4835-AB19-97D3387B064F</ClientId>
+		<VendorId>CadMasters</VendorId>
+		<VendorDescription>CadMasters - Mark Landis</VendorDescription>
+	</AddIn>
   <AddIn Type="Application">
     <Name>Application Sesson1</Name>
     <Assembly>Sesson1.dll</Assembly>
